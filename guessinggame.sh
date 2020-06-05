@@ -1,26 +1,29 @@
 #!/usr/bin/env bash
-# Files:guessinggame.sh
+# File: guessinggame.sh
 
 function startShell {
 	echo "how many files are in the current directory ?" 
 }
 
+# get files number
 function getFilesNumber {
 	local filesNo=$(ls -l | wc -l)
 	let filesNo=$(echo "$filesNo - 1" | bc -l)
 	echo $filesNo
 }
 
-
+# main function for guessing game
 function guessinggame {
+	# begin the game
 	startShell
-	# inp is varibale for the input
+	# inp is varibale for the input 
+	# assing inp with negative value to make the loop work
 	inp=-100
 	local actualNo=$(getFilesNumber)
-	echo $actualNo
 	while [[ inp -ne actualNo ]]; 
 	do
 		read inp
+		# check if the inp is high or low from the desired value
 		if [[ inp -gt actualNO ]]; 
 		then
 			echo "the input is  too high please try again"
@@ -34,4 +37,5 @@ function guessinggame {
 	echo "congratulations you are correct"
 }
 
+# call the function
 guessinggame
