@@ -7,8 +7,7 @@ function startShell {
 
 # get files number
 function getFilesNumber {
-	local filesNo=$(ls -l | wc -l)
-	let filesNo=$(echo "$filesNo - 1" | bc -l)
+	local filesNo=$(ls | wc -l)
 	echo $filesNo
 }
 
