@@ -6,18 +6,21 @@ function startShell {
 }
 
 function getFilesNumber {
-	local filesNo=$(ls -alh | wc -l)
-	return filesNo
+	local filesNo=$(ls -l | wc -l)
+	let filesNo=$(echo "$filesNo - 1" | bc -l)
+	echo $filesNo
 }
 
 
 function guessinggame {
 	startShell
 	# inp is varibale for the input
-	read inp
-	local actualNo=getFilesNumber
+	inp=-100
+	local actualNo=$(getFilesNumber)
+	echo $actualNo
 	while [[ inp -ne actualNo ]]; 
 	do
+		read inp
 		if [[ inp -gt actualNO ]]; 
 		then
 			echo "the input is  too high please try again"
