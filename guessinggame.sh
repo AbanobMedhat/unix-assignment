@@ -7,7 +7,8 @@ function startShell {
 
 # get files number
 function getFilesNumber {
-	local filesNo=$(ls | wc -l)
+	local filesNo=$(ls -a| wc -l)
+	let filesNo=$(echo "$filesNo - 2" | bc )
 	echo $filesNo
 }
 
@@ -17,13 +18,13 @@ function guessinggame {
 	startShell
 	# inp is varibale for the input 
 	# assing inp with negative value to make the loop work
-	inp=-100
+	local inp=-100
 	local actualNo=$(getFilesNumber)
 	while [[ inp -ne actualNo ]]; 
 	do
 		read inp
 		# check if the inp is high or low from the desired value
-		if [[ inp -gt actualNO ]]; 
+		if [[ inp -gt actualNo ]]; 
 		then
 			echo "the input is  too high please try again"
 			#statements
